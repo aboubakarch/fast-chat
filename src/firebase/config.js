@@ -5,16 +5,16 @@ import { initializeApp, getApps } from 'firebase/app';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyB6qAkG61n7UBM8zNW60LKMz1xheqRsqZI',
-  authDomain: 'fast-chat-2883c.firebaseapp.com',
-  projectId: 'fast-chat-2883c',
-  storageBucket: 'fast-chat-2883c.appspot.com',
-  messagingSenderId: '1046586056259',
-  appId: '1:1046586056259:web:34f473a2661409093d7ef6',
-  measurementId: 'G-79BW047462',
-  databaseURL:
-    'https://fast-chat-2883c-default-rtdb.asia-southeast1.firebasedatabase.app/',
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+  databaseURL: process.env.NEXT_PUBLIC_DATA_BASE_URL,
 };
 
 // Initialize Firebase

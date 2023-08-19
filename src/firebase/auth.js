@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
 import firebaseApp from './config';
 import cookies from 'js-cookie';
@@ -19,8 +20,9 @@ export const signup = (email, password, name, avatar) => {
   return new Promise((resolve, reject) =>
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (resp) => {
-        createUserNode(resp.user.uid);
+        createUserNode(resp.user.uid, name, avatar);
         setAccessToken(resp.user);
+
         await updateProfile(resp.user, { displayName: name, photoURL: avatar });
         resolve();
       })
@@ -43,4 +45,20 @@ export const login = (email, password) => {
         reject();
       })
   );
+};
+
+export const logout = () => {
+  return signOut(auth);
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    auth.onAuthStateChanged((observer) => {
+      try {
+        resolve(observer);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  });
 };

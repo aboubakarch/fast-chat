@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-const ChatMsg = ({ type = 'receiver' }) => {
+const ChatMsg = ({ type = 'receiver', data }) => {
   const containerClasses = `${
     type === 'receiver' ? '' : 'flex-row-reverse'
   } flex items-end mb-[12px]`;
@@ -16,15 +16,12 @@ const ChatMsg = ({ type = 'receiver' }) => {
     <div className={containerClasses}>
       <Image
         className="object-cover rounded-full"
-        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+        src={data.sendBy.avatar}
         alt="Avatar"
         width={25}
         height={25}
       />
-      <p className={msgClasses}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nisi
-        alias, id ipsa laudantium cumque ipsum repellendus delectus
-      </p>
+      <p className={msgClasses}>{data.message}</p>
     </div>
   );
 };

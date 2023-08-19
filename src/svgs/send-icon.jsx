@@ -1,8 +1,9 @@
 import React from 'react';
 
-const SendIcon = () => {
+const SendIcon = ({ onClick }) => {
   return (
     <svg
+      onClick={onClick}
       width="43"
       height="43"
       viewBox="0 0 45 45"
